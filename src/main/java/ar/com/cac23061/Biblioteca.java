@@ -12,19 +12,7 @@ public class Biblioteca {
 	private ArrayList<Ejemplar> catalogo; 
 	private ArrayList<Empleado> personal;
 	private ArrayList<Cliente> clientes;
-	
-	//----------- colocar generatePassword en un modulo separado --------
-	/*private String generatePassword() {
-		String caracteres = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890@*+-()/&%$#!";
-		Random random = new Random();
-		String result = "";
-		int seguridad = 16;
-		for(int i=0; i<seguridad; i++) {
-			result += caracteres.charAt(random.nextInt(caracteres.length()));
-		}
-		return result;
-	}*/
-	//------------------------------------------------------------------
+
 	//Constructor
 	public Biblioteca(String _nombre, String _direccion, Persona _director) {
 		this.clientes = new ArrayList<Cliente>();
@@ -74,23 +62,35 @@ public class Biblioteca {
 	public void altaCliente(Persona _p) {
 		this.clientes.add(new Cliente(_p));
 	}
-	public void bajaCliente(int _id) {
+	public boolean bajaCliente(int _id) {
 		for(Cliente c : this.clientes) {
 			if(c.getId()==_id) {
 				this.clientes.remove(c);
-				return;
+				return true;
+			}
+		}
+		return false;
+	}
+	public void bajaCliente(int _id, boolean _info) {
+		boolean succes = bajaCliente(_id);
+		if (_info) {
+			if (succes) {
+				System.out.println("El cliente "+ String.valueOf(_id) + " fue dado de baja");
+			}
+			else {
+				System.out.println("\nEl cliente "+ String.valueOf(_id) + " no se encuentra en los registros\n");
 			}
 		}
 	}
 	public void agregarEjemplar(String _nombre, int _cantidad) {
-		for(Ejemplar e : this.catalogo) {		//Se recorre el catalogo para ver si los ejemplares
+		for(Ejemplar e : this.catalogo) {       //Se recorre el catalogo para ver si los ejemplares
 			if(e.getNombre().equals(_nombre)) { //a ingresar ya estan catalogados
-				e.add(_cantidad);				//y en caso de estarlo, se le suma a los existentes
-				return;							//la cantidad ingresada
+				e.add(_cantidad);               //y en caso de estarlo, se le suma a los existentes
+				return;                         //la cantidad ingresada
 			}
 		}
-		Ejemplar nuevo = new Ejemplar(_nombre, _cantidad); 	//Caso contrario se crea una instancia de Ejemplar
-		this.catalogo.add(nuevo);							//con los valores ingresados y se la agrega al catalogo
+		Ejemplar nuevo = new Ejemplar(_nombre, _cantidad); //Caso contrario se crea una instancia de Ejemplar
+		this.catalogo.add(nuevo);                          //con los valores ingresados y se la agrega al catalogo
 	}
 }
 

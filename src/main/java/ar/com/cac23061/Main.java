@@ -30,14 +30,30 @@ public class Main {
 		}
 		
 		//Probando generador de personas
-		//GetSome.people retorna un arreglo de 23 personas sobre el que se itera para de esta
-		//forma agregar cada una de esas personas en la lista de clientes mediante el metodo add
+		//GetSome.people retorna un arreglo de 23 personas sobre el que se itera para 
+		//agregar a cada una de esas personas en la lista de clientes mediante el metodo add
 		
-		for(Persona p: GetSome.people(23)) { nro1.altaCliente(p); }
-		for(Persona p: GetSome.people(177)) { nro1.altaCliente(p); }
-		//Consultar si es de mal gusto hacer los for en una sola linea
-		for(Cliente c : nro1.getClientes()) { System.out.println(c); }
-			
+		for(Persona p: GetSome.people(23)) {
+			nro1.altaCliente(p);
+		}
+		for(Persona p: GetSome.people(177)) {
+			nro1.altaCliente(p);
+		}
+		for(Cliente c : nro1.getClientes()) {
+			System.out.println(c);
+		}
+		
+		//Probando baja clientes
+		nro1.bajaCliente(197);
+		
+		for(Cliente c : nro1.getClientes()) {
+			System.out.println(c);
+		}
+		
+		nro1.bajaCliente(192,true);
+		
+		
+		
 	}
 
 }
