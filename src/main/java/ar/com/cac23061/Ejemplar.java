@@ -46,6 +46,6 @@ public class Ejemplar {
 		this.disponibles -= n;
 	}
 	public String toString() {
-		return "Nombre: " + this.nombre + "Disponibles: " + this.disponibles;
+		return "ID: " +this.id + "\tNombre: " + this.nombre + "\tDisponibles: " + this.disponibles;
 	}
 }

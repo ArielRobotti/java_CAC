@@ -9,11 +9,22 @@ public class Cliente extends Persona{
 		this.id = generateId;
 		Cliente.generateId += 1;
 	}
+	public Cliente(int _dni, String _primerNombre, String _segundoNombre, String _apellido) {
+		super(_dni, _primerNombre,_segundoNombre, _apellido);
+		this.id = generateId;
+		Cliente.generateId += 1;
+	}
+	
 	public Cliente(Persona _p) {
-		super(_p.getDni(), _p.getNombre(), _p.getApellido());
+		super(_p.getDni(), _p.getNombre(),_p.getSegundoNombre(), _p.getApellido());
 		this.id = generateId;
 		Cliente.generateId += 1;
 	}
 	public int getId(){return this.id;}
+	
+	@Override
+	public String toString() {
+		return "ID: " +this.id + "\t"+super.toString();
+	}
 	
 }

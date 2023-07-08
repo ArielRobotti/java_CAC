@@ -1,11 +1,10 @@
 package ar.com.cac23061;
-//import java.util.Scanner;
 import java.util.ArrayList;
 
 public class Main {
 	public static void main(String [] argumentos) {
 		Persona director = new Persona( 14992762,  "Juan Carlos", "Gomez");
-		Biblioteca Nro1 = new Biblioteca("Almafuerte",  "Primero de Mayo 4312", director);
+		Biblioteca nro1 = new Biblioteca("Almafuerte",  "Primero de Mayo 4312", director);
 		
 		ArrayList<Ejemplar> data = new ArrayList<Ejemplar>();
 		
@@ -17,18 +16,27 @@ public class Main {
 		data.add(new Ejemplar("---Python para todos--", 11));
 		
 		//probando setCatalogo
-		Nro1.setCatalogo(data);
+		nro1.setCatalogo(data);
 		
-		for(Ejemplar e: Nro1.getCatalogo()) {
+		for(Ejemplar e: nro1.getCatalogo()) {
 			System.out.println(e);
 		}
 		System.out.println("------------Agregando dos mas ----");
-		Nro1.agregarEjemplar("Crimen y castigo", 22);
-		Nro1.agregarEjemplar("-----Don Quijote------", 9);
+		nro1.agregarEjemplar("Crimen y castigo", 22);
+		nro1.agregarEjemplar("-----Don Quijote------", 9);
 		
-		for(Ejemplar e: Nro1.getCatalogo()) {
+		for(Ejemplar e: nro1.getCatalogo()) {
 			System.out.println(e);
 		}
+		
+		//Probando generador de personas
+		//GetSome.people retorna un arreglo de 23 personas sobre el que se itera para de esta
+		//forma agregar cada una de esas personas en la lista de clientes mediante el metodo add
+		
+		for(Persona p: GetSome.people(23)) { nro1.altaCliente(p); }
+		for(Persona p: GetSome.people(177)) { nro1.altaCliente(p); }
+		//Consultar si es de mal gusto hacer los for en una sola linea
+		for(Cliente c : nro1.getClientes()) { System.out.println(c); }
 			
 	}
 

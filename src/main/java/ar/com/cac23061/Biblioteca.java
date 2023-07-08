@@ -2,7 +2,6 @@ package ar.com.cac23061;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.Random;
 
 public class Biblioteca {
 
@@ -15,8 +14,8 @@ public class Biblioteca {
 	private ArrayList<Cliente> clientes;
 	
 	//----------- colocar generatePassword en un modulo separado --------
-	private String generatePassword() {
-		String caracteres = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890@-_.+/";
+	/*private String generatePassword() {
+		String caracteres = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890@*+-()/&%$#!";
 		Random random = new Random();
 		String result = "";
 		int seguridad = 16;
@@ -24,14 +23,14 @@ public class Biblioteca {
 			result += caracteres.charAt(random.nextInt(caracteres.length()));
 		}
 		return result;
-	}
+	}*/
 	//------------------------------------------------------------------
 	//Constructor
 	public Biblioteca(String _nombre, String _direccion, Persona _director) {
 		this.clientes = new ArrayList<Cliente>();
 		this.direccion = _direccion;
 		this.director = new Empleado(_director,"Direccion general");
-		this.password = generatePassword();
+		this.password = GetSome.password();
 		System.out.println("Guarde esta clave de seguridad en un lugar seguro\n"+this.password);
 		this.nombre = _nombre;		
 	}
@@ -90,7 +89,7 @@ public class Biblioteca {
 				return;							//la cantidad ingresada
 			}
 		}
-		Ejemplar nuevo = new Ejemplar(_nombre, _cantidad); 	//En caso contrario se crea una instancia de Ejemplar
+		Ejemplar nuevo = new Ejemplar(_nombre, _cantidad); 	//Caso contrario se crea una instancia de Ejemplar
 		this.catalogo.add(nuevo);							//con los valores ingresados y se la agrega al catalogo
 	}
 }
