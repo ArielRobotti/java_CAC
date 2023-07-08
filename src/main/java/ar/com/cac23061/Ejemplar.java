@@ -38,5 +38,14 @@ public class Ejemplar {
 	public void recuperar(Cliente _de) {
 		this.disponibles += 1;
 		this.prestados.remove(_de);
-	}	
+	}
+	public void add(int n) {
+		this.disponibles += n;
+	}
+	public void baja(int n) {
+		this.disponibles -= n;
+	}
+	public String toString() {
+		return "Nombre: " + this.nombre + "Disponibles: " + this.disponibles;
+	}
 }

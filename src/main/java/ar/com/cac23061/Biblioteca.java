@@ -26,7 +26,7 @@ public class Biblioteca {
 		return result;
 	}
 	//------------------------------------------------------------------
-	//Construnctor
+	//Constructor
 	public Biblioteca(String _nombre, String _direccion, Persona _director) {
 		this.clientes = new ArrayList<Cliente>();
 		this.direccion = _direccion;
@@ -46,6 +46,7 @@ public class Biblioteca {
 	//setters
 	public void setCatalogo(ArrayList<Ejemplar> _data) {
 		Scanner scanner = new Scanner(System.in);
+		System.out.println("Está a punto de sobreescribir todo el catálogo");
 		System.out.println("Ingrese la clave de seguridad");
 		String entrada = scanner.nextLine();
 		if(this.password.equals(entrada)){
@@ -60,7 +61,7 @@ public class Biblioteca {
 	
 	//metodos
 	public void aceptarRenuncia(int _dni) {
-		for(Empleado e: personal) {
+		for(Empleado e : personal) {
 			if(e.getDni() == _dni) {
 				personal.remove(e);
 				return;
@@ -75,15 +76,22 @@ public class Biblioteca {
 		this.clientes.add(new Cliente(_p));
 	}
 	public void bajaCliente(int _id) {
-		for(Cliente c: this.clientes) {
+		for(Cliente c : this.clientes) {
 			if(c.getId()==_id) {
 				this.clientes.remove(c);
 				return;
 			}
 		}
 	}
-	public void agregarEjemplar(Ejemplar _e, int _cantidad) {
-		
+	public void agregarEjemplar(String _nombre, int _cantidad) {
+		for(Ejemplar e : this.catalogo) {
+			if(e.getNombre().equals(_nombre)) {
+				e.add(_cantidad);
+				return;
+			}
+		}
+		Ejemplar nuevo = new Ejemplar(_nombre, _cantidad);
+		this.catalogo.add(nuevo);
 	}
 }
 
