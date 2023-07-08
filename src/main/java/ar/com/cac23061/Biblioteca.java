@@ -84,14 +84,14 @@ public class Biblioteca {
 		}
 	}
 	public void agregarEjemplar(String _nombre, int _cantidad) {
-		for(Ejemplar e : this.catalogo) {
-			if(e.getNombre().equals(_nombre)) {
-				e.add(_cantidad);
-				return;
+		for(Ejemplar e : this.catalogo) {		//Se recorre el catalogo para ver si los ejemplares
+			if(e.getNombre().equals(_nombre)) { //a ingresar ya estan catalogados
+				e.add(_cantidad);				//y en caso de estarlo, se le suma a los existentes
+				return;							//la cantidad ingresada
 			}
 		}
-		Ejemplar nuevo = new Ejemplar(_nombre, _cantidad);
-		this.catalogo.add(nuevo);
+		Ejemplar nuevo = new Ejemplar(_nombre, _cantidad); 	//En caso contrario se crea una instancia de Ejemplar
+		this.catalogo.add(nuevo);							//con los valores ingresados y se la agrega al catalogo
 	}
 }
 
